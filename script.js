@@ -1,26 +1,61 @@
 const form = document.getElementById('form');
 const imgAproved = '<img src="./public/images/aprovado.png" alt="Emoji festejando" />';
 const imgFlunked = '<img src="./public/images/reprovado.png" alt="Emoji decepcionado" />';
+const activities = [];
+const scores = [];
+const aprovedSpan = '<span class = "result aproved">Aprovado</span>';
+const flunkedSpan = '<span class = "result flunked">Reprovado</span>';
+const minScore = parseFloat(prompt('Digite a nota mínima:'));
 
 let rows = '';
+
+const addRow = () => {
+    const inputActivity = document.getElementById("activity-name");
+    const inputScore = document.getElementById("score");
+
+    if(activities.includes(inputActivity.value)) return alert(`A atividade ${inputActivity.value} já foi inserida.`)
+
+    activities.push(inputActivity.value);
+    scores.push(parseFloat(inputScore.value));
+
+    let row = '<tr>';
+    row += `<td>${inputActivity.value}</td>`;
+    row += `<td>${inputScore.value}</td>`;
+    row += `<td>${inputScore.value >= 7 ? imgAproved : imgFlunked}</td>`;
+    row += `</tr>`;
+
+    rows += row;
+    
+    inputActivity.value = '';
+    inputScore.value = '';
+};
+
+function updateTable(){
+    const tableBody = document.querySelector('tbody');
+    tableBody.innerHTML = rows;
+};
+
+const getAvarageScore = () => {
+    let scoreSum = 0;
+
+    for (let i = 0; i < scores.length; i++){
+        scoreSum += scores[i];
+    };
+
+    return scoreSum / (scores.length);
+};
+
+const updateFinalAvarage = () => {
+    const finalAvarage = getAvarageScore();
+    
+    document.getElementById('avarage-score-value').innerHTML = finalAvarage.toFixed(2);
+    document.getElementById('avarage-score-result').innerHTML = finalAvarage >= minScore ? aprovedSpan : flunkedSpan;
+};
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    const inputActivity = document.getElementById("activity-name");
-    const inputScore = document.getElementById("score");
-
-    let row = '<tr>';
-    row += `<tr>${inputActivity.value}</tr>`;
-    row += `<tr>${inputScore.value}</tr>`;
-    row += `<tr>${inputScore.value >= 7 ? imgAproved : imgFlunked}</tr>`;
-    row += `</tr>`;
-
-    rows = row;
-
-    const tableBody = document.querySelector('tbody');
-    tableBody.innerHTML = rows;
-
-    inputActivity.value = '';
-    inputScore.value = '';
+    addRow();
+    updateTable();
+    updateFinalAvarage();
 })
