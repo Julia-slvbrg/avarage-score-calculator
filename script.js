@@ -35,7 +35,7 @@ function updateTable(){
     tableBody.innerHTML = rows;
 };
 
-const getAvarageScore = () => {
+const getaverageScore = () => {
     let scoreSum = 0;
 
     for (let i = 0; i < scores.length; i++){
@@ -45,11 +45,11 @@ const getAvarageScore = () => {
     return scoreSum / (scores.length);
 };
 
-const updateFinalAvarage = () => {
-    const finalAvarage = getAvarageScore();
+const updateFinalAverage = () => {
+    const finalAverage = getaverageScore();
     
-    document.getElementById('avarage-score-value').innerHTML = finalAvarage.toFixed(2);
-    document.getElementById('avarage-score-result').innerHTML = finalAvarage >= minScore ? aprovedSpan : flunkedSpan;
+    document.getElementById('average-score-value').innerHTML = finalAverage.toFixed(2);
+    document.getElementById('average-score-result').innerHTML = finalAverage >= minScore ? aprovedSpan : flunkedSpan;
 };
 
 form.addEventListener('submit', function(e){
@@ -57,5 +57,5 @@ form.addEventListener('submit', function(e){
 
     addRow();
     updateTable();
-    updateFinalAvarage();
+    updateFinalAverage();
 })
