@@ -23,6 +23,8 @@ This application explores the use of the DOM to dynamically display information 
 
 ## Demonstration
 
+https://github.com/Julia-slvbrg/average-score-calculator/assets/114543081/83eb3108-b8d0-462c-a3dd-ec472b512b47
+
 
 
 ## How to run the application
