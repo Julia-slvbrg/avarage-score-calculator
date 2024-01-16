@@ -1,5 +1,5 @@
 # Average Score Calculator
-![Layout](./public/images/layout.png)
+![Layout](./public/layout.png)
 
 This application explores the use of the DOM to dynamically display information on the screen as the user interacts with it. It functions as a calculator for students' average scores, indicating whether the student achieved the individual passing score for each activity and providing the overall average score, considering all activities entered by the user.
 
@@ -17,9 +17,9 @@ This application explores the use of the DOM to dynamically display information 
 
 ## Layout
 
-![Aproved](./public/images/aproved.png)
+![Aproved](./public/aproved.png)
 
-![Flunked](./public/images/flunked.png)
+![Flunked](./public/flunked.png)
 
 ## Demonstration
 
